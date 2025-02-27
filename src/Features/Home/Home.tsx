@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '@/components/Header/Navbar'
 import {Button} from '@/components/ui/button'
-import {   Book,User } from "lucide-react"; 
+import {   Book,BookOpen,User } from "lucide-react"; 
 import Homecard from './ui/Homecard'
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       </div>
      
 
-      <section className=' w-full container  py-10 mx-auto'>
+      <section className='  w-[92%]  py-10 mx-auto'>
         <header className="flex flex-col items-center text-center mb-12">
           <div className='relative mb-4'>
             <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-75 blur" ></div>
@@ -29,7 +29,7 @@ const Home = () => {
 
           <div className='flex md:flex-row flex-col space-y-5 justify-center gap-x-6'>
             
-          <Button variant='default' size='lg'><Book/>Explore Books  </Button>
+          <Button variant='default' size='lg'><BookOpen/>Explore Books  </Button>
           <Button variant='outline' size='lg'><User/>Meet Characters  </Button>
                             
           </div>

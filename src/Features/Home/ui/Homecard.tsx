@@ -14,18 +14,18 @@ import { Ghost } from 'lucide-react'
 
 const Homecard = () => {
     return (
-        <div className='grid lg:grid-cols-4 sm:grid-cols-2 md:gap-4 gap-7'>
+        <div className='grid lg:grid-cols-4 sm:grid-cols-2 md:gap-6 gap-7'>
 
             <section className='rounded-lg relative text-card-foreground shadow-sm '>
                 <div className='absolute h-2 left-0 top-0 w-full rounded-t-lg bg-gradient-to-r from-purple-600 to-blue-600'></div>
 
                 <Card>
                     <CardHeader>
-                        <CardTitle className='text-2xl font-semibold'><BookOpen className='inline w-[8%] mx-auto mb-1'/> Books</CardTitle>
-                        <CardDescription className='font-semibold'>Explore the Harry Potter book series</CardDescription>
+                        <CardTitle className='text-2xl font-semibold font-inter'><BookOpen className='inline w-[8%] mx-auto mb-1'/> Books</CardTitle>
+                        <CardDescription className='font-semibold text-sm font-Inter' >Explore the Harry Potter book series</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p>
+                        <p className='font-Inter'>
                             Discover details about all seven books in the Harry Potter series, including summaries and publication dates.</p>
                     </CardContent>
                     <CardFooter className='items-center'>
@@ -41,12 +41,12 @@ const Homecard = () => {
                 <div className=' absolute h-2 left-0 top-0 w-full rounded-t-lg bg-gradient-to-r from-purple-600 to-blue-600'></div>
 
             <Card className=''>
-                <CardHeader>
-                    <CardTitle className='text-2xl font-semibold'> <User className='inline w-[8%] mx-auto mb-1'/> Characters</CardTitle>
-                    <CardDescription className='font-semibold'>Meet the wizards and witches</CardDescription>
+                <CardHeader className=''>
+                    <CardTitle className='text-2xl font-semibold font-Inter'> <User className='inline w-[8%] mx-auto mb-1'/> Characters</CardTitle>
+                    <CardDescription className='font-semibold font-Inter text-sm'>Meet the wizards and witches</CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <p>Browse through the characters from the Harry Potter universe, including their backgrounds and affiliations.</p>
+                <CardContent className='px-7'>
+                    <p className='font-Inter'>Browse through the characters from the Harry Potter universe, including their backgrounds and affiliations.</p>
                 </CardContent>
                 <CardFooter>
                     <Button className='w-full mx-auto' variant='ghost'>View Characters</Button>

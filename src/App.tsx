@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from '@/Features/Home/Home'
+import Books from '../src/Features/Books/Book'
 import './App.css'
 import Navbar from './components/Header/Navbar'
+import Character from './Features/Characters/Character';
 
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -13,14 +15,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Footer */}
       <footer className="w-full mx-auto border-t py-6  ">
-        <div className='container lg:w-full md:w-[90%] w-[85%]  mx-auto'>
-        <p className='text-sm md:text-left text-center mx-auto font-semibold text-muted-foreground'>
-        © 2025 Potter API Explorer. All rights reserved.
-        </p>
+        <div className=' w-[92%]  mx-auto'>
+          <p className='text-sm md:text-left text-center mx-auto font-semibold text-muted-foreground'>
+            © 2025 Potter API Explorer. All rights reserved.
+          </p>
 
         </div>
-        
-      
+
+
       </footer>
     </div>
   );
@@ -31,20 +33,21 @@ function App() {
 
   return (
     <>
-   <Router>
-   <Navbar />
-   <Layout>
-    <Routes>
-    <Route path="/" element={<Navigate to="/home" />} />
-    <Route path="/home" element={<Home />} />
-    {/* <Route path="/books" element={<Books />} /> */}
+      <Router>
+        <Navbar />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/characters" element={<Character />} />
 
-    </Routes>
-   </Layout>
-   </Router>
+          </Routes>
+        </Layout>
+      </Router>
 
-      
-       
+
+
     </>
   )
 }
