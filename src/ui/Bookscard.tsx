@@ -1,5 +1,3 @@
-import React from 'react'
-
 import {
     Card,
     CardContent,
@@ -8,120 +6,81 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Button } from '@/components/ui/button'
-import { Home, BookOpen, User, Castle, WandSparkles } from "lucide-react";
-import placeholder from '../assets/Books/placeholder.svg'
+// import placeholder from '../assets/Books/placeholder.svg'
+import { Badge } from "@/components/ui/badge"
 
-const Bookscard = () => {
+
+
+type Book = {
+    number: number;
+    title: string;
+    originalTitle: string;
+    releaseDate: string;
+    description: string;
+    pages: number;
+    cover: string;
+    index: number;
+};
+
+type Bookdata = {
+    book: Book;
+};
+
+
+
+
+const Bookscard: React.FC<Bookdata> = ({book}) => {
+
+    const limitDescription=(description:string,limit:number)=>{
+        return description.split(" ").splice(0,limit).join(" ");
+    }
+
+    
+
+    // checkingg data is present or not
+    if (!book) {
+        return <p className="text-white text-2xl">No books available</p>;
+    }
+
     return (
-        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 '>
+        <div className=' '>
 
-            <section className='rounded-lg relative text-card-foreground shadow-sm '>
+            <section key={book.index} className='rounded-lg relative text-card-foreground shadow-sm '>
                 <div className='absolute h-2 left-0 top-0 w-full rounded-t-lg bg-gradient-to-r from-purple-600 to-blue-600'></div>
-                <Card>
+                <Card className="lg:h-[425px]">
                     <CardHeader>
-                        <CardTitle className='text-2xl font-semibold font-Inter leading-none tracking-tight mt-2'> Harry Potter and the Philosopher's Stone </CardTitle>
-                        <CardDescription className=''>
-                            <p >
-                                <div className='font-Inter inline-block border rounded-full px-2.5 py-0.5 text-xs font-semibold  text-white'>26 June 1997</div>
-                            </p>
+                        <CardTitle className='text-2xl font-semibold font-Inter leading-none tracking-tight mt-2'>
+                            {book.title}
+                        </CardTitle>
+                        <CardDescription>
+                            <Badge variant="outline" className='rounded-full'>
+                                {book.releaseDate}
+                            </Badge>
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className=''>
-                        <figure className='flex flex-row gap-5'>
-                            <div className=''>
-                                <img src={placeholder} className='w-34 h-48 object-cover  rounded-md'></img>
+                    <CardContent>
+                        <figure className='flex md:flex-row   flex-col  lg:gap-5 gap-4'>
+                            <div className="xl:w-[60%] w-[95%] mx-auto flex justify-center sm:justify-start items-center">
+                                <img src={book.cover} className='w-34 h-48  object-cover rounded-md' alt="Book Cover" />
                             </div>
-                            <p className='md:w-1/2 lg:w-[65%] my-auto font-Inter text-sm text-muted-foreground'> Harry Potter discovers his magical heritage on his 11th birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.</p>
+                            <p className='w-[80%] md:w-[90%] xl:w-full lg:w-[90%] my-auto font-Inter text-sm text-muted-foreground'>
+                                {limitDescription(book.description,20)}
+                            </p>
                         </figure>
                     </CardContent>
                     <CardFooter className='mt-2'>
-                        <p className='font-Inter text-muted-foreground text-xs text-left'>Book 1 in the series</p>
+                        <p className='font-Inter text-muted-foreground text-xs text-left'>
+                            Book {book.number} in the series
+                        </p>
                     </CardFooter>
                 </Card>
             </section>
-
-
-
-            <section className='rounded-lg relative text-card-foreground shadow-sm '>
-                <div className='absolute h-2 left-0 top-0 w-full rounded-t-lg bg-gradient-to-r from-purple-600 to-blue-600'></div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className='text-2xl font-semibold font-Inter leading-none tracking-tight mt-2'> Harry Potter and the Chamber of Secrets </CardTitle>
-                        <CardDescription className=''>
-                            <p >
-                                <div className='font-Inter inline-block border rounded-full px-2.5 py-0.5 text-xs font-semibold  text-white'>26 June 1997</div>
-                            </p>
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className=''>
-                        <figure className='flex flex-row gap-5'>
-                            <div className='md:w-1/2 lg:w-[35%]'>
-                                <img src={placeholder} className='h-[190px] object-cover  rounded-md'></img>
-                            </div>
-                            <p className='md:w-1/2 lg:w-[65%] my-auto font-Inter text-sm text-muted-foreground'> Harry returns to Hogwarts for his second year, only to find the school plagued by a series of mysterious attacks..</p>
-                        </figure>
-                    </CardContent>
-                    <CardFooter className='mt-2'>
-                        <p className='font-Inter text-muted-foreground text-xs text-left'>Book 1 in the series</p>
-                    </CardFooter>
-                </Card>
-            </section>
-
-
-
-            <section className='rounded-lg relative text-card-foreground shadow-sm '>
-                <div className='absolute h-2 left-0 top-0 w-full rounded-t-lg bg-gradient-to-r from-purple-600 to-blue-600'></div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className='text-2xl font-semibold font-Inter leading-none tracking-tight'> Harry Potter and the Philosopher's Stone </CardTitle>
-                        <CardDescription className=''>
-                            <p >
-                                <div className='font-Inter inline-block border rounded-full px-2.5 py-0.5 text-xs font-semibold  text-white'>26 June 1997</div>
-                            </p>
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className=''>
-                        <figure className='flex flex-row gap-5'>
-                            <div className='md:w-1/2 lg:w-[35%]'>
-                                <img src={placeholder} className='h-[190px] object-cover  rounded-md'></img>
-                            </div>
-                            <p className='md:w-1/2 lg:w-[65%] my-auto font-Inter text-sm text-muted-foreground'> Harry Potter discovers his magical heritage on his 11th birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.</p>
-                        </figure>
-                    </CardContent>
-                    <CardFooter className='mt-2'>
-                        <p className='font-Inter text-muted-foreground text-xs text-left'>Book 1 in the series</p>
-                    </CardFooter>
-                </Card>
-            </section>
-
-            <section className='rounded-lg relative text-card-foreground shadow-sm '>
-                <div className='absolute h-2 left-0 top-0 w-full rounded-t-lg bg-gradient-to-r from-purple-600 to-blue-600'></div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle className='text-2xl font-semibold font-Inter leading-none tracking-tight'> Harry Potter and the Philosopher's Stone </CardTitle>
-                        <CardDescription className=''>
-                            <p >
-                                <div className='font-Inter inline-block border rounded-full px-2.5 py-0.5 text-xs font-semibold  text-white'>26 June 1997</div>
-                            </p>
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className=''>
-                        <figure className='flex flex-row gap-5'>
-                            <div className='md:w-1/2 lg:w-[35%]'>
-                                <img src={placeholder} className='h-[190px] object-cover  rounded-md'></img>
-                            </div>
-                            <p className='md:w-1/2 lg:w-[65%] my-auto font-Inter text-sm text-muted-foreground'> Harry Potter discovers his magical heritage on his 11th birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.</p>
-                        </figure>
-                    </CardContent>
-                    <CardFooter className='mt-2'>
-                        <p className='font-Inter text-muted-foreground text-xs text-left'>Book 1 in the series</p>
-                    </CardFooter>
-                </Card>
-            </section>
-
+           
         </div>
-    )
-}
+    );
+};
 
-export default Bookscard
+
+
+
+export default Bookscard 

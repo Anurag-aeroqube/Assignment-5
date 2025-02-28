@@ -5,6 +5,9 @@ import Books from '../src/Features/Books/Book'
 import './App.css'
 import Navbar from './components/Header/Navbar'
 import Character from './Features/Characters/Character';
+import Houses from './Features/Houses/Houses';
+import Spells from './Features/Spells/Spells';
+
 
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -41,6 +44,8 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/books" element={<Books />} />
             <Route path="/characters" element={<Character />} />
+            <Route path='/spells' element={<Spells/>} />
+            <Route path='/houses' element={<Houses/>} />
 
           </Routes>
         </Layout>

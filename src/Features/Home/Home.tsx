@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '@/components/Header/Navbar'
 import {Button} from '@/components/ui/button'
 import {   Book,BookOpen,User } from "lucide-react"; 
 import Homecard from './ui/Homecard'
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
+  
+   const [activeButton, setActiveButton] = useState<string | null>(null);
+  
+      // Function to change the button variant
+      const changeClick = (buttonName: string) => {
+          setActiveButton(buttonName);
+      };
   return (
     <div className=''>
       <div className='sticky top-0'>
@@ -28,16 +36,27 @@ const Home = () => {
           </div>
 
           <div className='flex md:flex-row flex-col space-y-5 justify-center gap-x-6'>
-            
-          <Button variant='default' size='lg'><BookOpen/>Explore Books  </Button>
-          <Button variant='outline' size='lg'><User/>Meet Characters  </Button>
+
+
+           <NavLink to='/books' >
+           <Button variant='default' size='lg' className='cursor-pointer'><BookOpen onClick={() => changeClick('Home')}/>Explore Books  </Button>
+           </NavLink> 
+
+           <NavLink to='/characters'>
+    <Button variant='outline' size='lg' className="cursor-pointer">
+        <User /> Meet Characters
+    </Button>
+</NavLink>
+
+          
+          
                             
           </div>
          
         </header>
 
 
-        <div className='lg:w-full md:w-[90%] sm:w-[85%] mx-auto'>
+        <div className='lg:w-full md:w-full sm:w-[85%] mx-auto'>
         
           <Homecard></Homecard>
         </div>
