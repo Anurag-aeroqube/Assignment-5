@@ -8,9 +8,9 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { Button } from '@/components/ui/button'
-import {  Home, BookOpen, User, Castle,WandSparkles } from "lucide-react"; 
+import {  BookOpen, User, Castle,WandSparkles } from "lucide-react"; 
 import { NavLink } from "react-router-dom";
-import character from '@/Features/Characters/Character';
+
 
 
 const Homecard = () => {
@@ -22,7 +22,7 @@ const Homecard = () => {
 
                 <Card className='lg:h-[356px] xl:h-[288px] md:h-[268px'>
                     <CardHeader>
-                        <CardTitle className='text-2xl font-semibold font-inter'><BookOpen className='inline w-[8%] mx-auto mb-1'/> Books</CardTitle>
+                        <CardTitle className='text-2xl font-semibold font-inter'><BookOpen className='inline xl:w-[8%] w-[10%] mx-auto mb-1'/> Books</CardTitle>
                         <CardDescription className='font-semibold text-sm font-Inter' >Explore the Harry Potter book series</CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -45,7 +45,7 @@ const Homecard = () => {
 
             <Card className=''>
                 <CardHeader className=''>
-                    <CardTitle className='text-2xl font-semibold font-Inter'> <User className='inline w-[8%] mx-auto mb-1'/> Characters</CardTitle>
+                    <CardTitle className='text-2xl font-semibold font-Inter'> <User className='inline xl:w-[8%] w-[10%] mx-auto mb-1'/> Characters</CardTitle>
                     <CardDescription className='font-semibold font-Inter text-sm'>Meet the wizards and witches</CardDescription>
                 </CardHeader>
                 <CardContent className='px-7'>
@@ -67,7 +67,7 @@ const Homecard = () => {
 
             <Card className=''>
                 <CardHeader>
-                    <CardTitle className='text-2xl font-semibold'><WandSparkles className='inline w-[8%] mx-auto mb-1'/> Spells</CardTitle>
+                    <CardTitle className='text-2xl font-semibold'><WandSparkles className='inline xl:w-[8%] w-[10%] mx-auto mb-1'/> Spells</CardTitle>
                     <CardDescription className='font-semibold'>Learn magical incantations</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -88,7 +88,7 @@ const Homecard = () => {
 
             <Card>
                 <CardHeader>
-                    <CardTitle className='text-2xl font-semibold'><Castle className='inline w-[8%] mx-auto mb-1'/> Houses</CardTitle>
+                    <CardTitle className='text-2xl font-semibold'><Castle className='inline xl:w-[8%] w-[10%] mx-auto mb-1'/> Houses</CardTitle>
                     <CardDescription className='font-semibold'>Explore Hogwarts houses</CardDescription>
                 </CardHeader>
                 <CardContent>

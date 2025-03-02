@@ -11,7 +11,8 @@ import {
 import { NavLink } from "react-router-dom";
 import ThemeToggle from "../Themetoggle";
 
-import { Home, BookOpen, User, Castle, WandSparkles } from "lucide-react";
+import { Home, BookOpen, User, Castle, WandSparkles, Menu , X} from "lucide-react";
+import { useState } from "react";
 // import { Button } from '../ui/button';
 
 const Navbar = () => {
@@ -22,24 +23,21 @@ const Navbar = () => {
     // const changeClick = (buttonName: string) => {
     //     setActiveButton(buttonName);
     // };
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <div className='flex sticky top-0 z-14 md:justify-center shadow-2xl border-b h-16 lg:space-x-5 bg-background/90 space-x-2 mx-auto '>
+        <div className='flex sticky top-0 z-14 lg:justify-center shadow-2xl border-b h-16 lg:space-x-5 bg-background/90 space-x-2 mx-auto '>
             <NavigationMenu className=' '>
                 <NavigationMenuList className='  gap-x-5'>
                     <NavLink
                         to="/home"
-
-
                     >
-                        <NavigationMenuItem className='text-xl font-bold md:text-center pl-4 mx-auto text-left' > ⚡ Potter API Explorer
+                        <NavigationMenuItem className='text-xl font-bold lg:text-center pl-4 mx-auto text-left' > ⚡ Potter API Explorer
                         </NavigationMenuItem>
                     </NavLink>
 
+                    <div className='hidden lg:flex gap-x-2'>
 
-
-
-                    <div className='hidden md:flex gap-x-2'>
                         <NavLink
                             to="/home"
                             className={({ isActive }) =>
@@ -63,13 +61,6 @@ const Navbar = () => {
                         >
                             <NavigationMenuItem className='text-sm' ><BookOpen size={14} className="inline" /> Books</NavigationMenuItem>
                         </NavLink>
-
-
-
-
-
-
-
 
                         <NavLink
                             to="/characters"
@@ -111,10 +102,14 @@ const Navbar = () => {
 
                     </div>
 
-                    <div className="flex sticky top-0 z-14 md:justify-between justify-end items-center px-4 shadow-2xl border-b h-16 bg-background/90">
+                    <div className="hidden lg:flex sticky top-0 z-14 md:justify-between justify-end items-center px-4 shadow-2xl border-b h-16 bg-background/90">
                         <ThemeToggle /> {/* Add the theme toggle button here */}
                     </div>
-
+                    
+                
+                    <button className="lg:hidden p-2 rounded-md sm:ml-110 ml-15" onClick={() => setMenuOpen(!menuOpen)}>
+                {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
 
                 </NavigationMenuList>
             </NavigationMenu>
