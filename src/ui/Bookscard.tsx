@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge"
 
 
 type Book = {
+    id:string;
     number: number;
     title: string;
     originalTitle: string;

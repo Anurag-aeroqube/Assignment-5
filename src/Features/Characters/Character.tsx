@@ -1,6 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React, { useEffect, useState } from "react";
+import React, { useEffect,  } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Charactercard from "@/ui/Charactercard";
+import { fetchCharacters } from "@/redux/slices/characterSlice";
+import { useLoading } from '@/Context/LoadingProvider';
+import { RootState, AppDispatch } from "@/redux/store";
 
 type Character = {
     fullname: string;
@@ -14,32 +18,16 @@ type Character = {
 };
 
 const Character = () => {
-    const [characters, setCharacters] = useState<Character[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
+    const dispatch = useDispatch<AppDispatch>();
+    const { characters, error } = useSelector((state: RootState) => state.characters);
+    const { startLoading, stopLoading } = useLoading();
+  
     useEffect(() => {
-        const fetchCharacters = async () => {
-            try {
-                setLoading(true);
-                const response = await fetch("https://potterapi-fedeperin.vercel.app/en/characters");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch characters");
-                }
-                const data = await response.json();
-                setCharacters(data);
-            } catch (err) {
-                console.error("API Error:", err);
-                setError("Failed to load characters.");
-            } finally {
-                setLoading(false);
-            }
-        };
+      startLoading();
+      dispatch(fetchCharacters()).finally(stopLoading);
+    }, [dispatch]);
 
-        fetchCharacters();
-    }, []);
-
-    if (loading) return <p className="text-center mt-10 text-gray-500">Loading characters...</p>;
+   
     if (error) return <p className="text-center text-red-500">Error: {error}</p>;
 
     // House-wise filtering function

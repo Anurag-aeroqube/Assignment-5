@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import SpellTab from "./ui/SpellTab";
+import { useLoading } from '@/Context/LoadingProvider';
 
 
 type SpellType = { 
@@ -12,7 +13,7 @@ type SpellType = {
 
 const Spells = () => {
     const [spells, setSpells] = useState<SpellType[]>([]);
-      const [loading, setLoading] = useState<boolean>(true);
+       const { startLoading, stopLoading } = useLoading();
       const [err, setError] = useState<string | null>(null);
       const [searchTerm, setSearchTerm] = useState("");
 
@@ -20,7 +21,7 @@ const Spells = () => {
     const getSpells = async () => {
     
       try {
-        setLoading(true);
+        startLoading();
        
         const response = await fetch('https://potterapi-fedeperin.vercel.app/en/spells');
         if (!response.ok) {
@@ -32,14 +33,14 @@ const Spells = () => {
         console.error('API Error:', err);
         setError('Failed to load books.');
       } finally {
-        setLoading(false);
+        stopLoading();
       }
     };
 
     getSpells();
   }, []);
 
-  if (loading) return <p className="text-center  text-gray-500">Loading Spells...</p>;
+  
   const filteredSpells = spells.filter((spell) =>
     spell.spell.toLowerCase().includes(searchTerm.toLowerCase())
   );

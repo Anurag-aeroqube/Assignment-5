@@ -1,45 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import Bookcard from '@/ui/Bookscard';
+import  { useEffect } from "react";
+import Bookcard from "@/ui/Bookscard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBooks } from "@/redux/slices/booksSlice";
+import { RootState, AppDispatch } from "@/redux/store";
+import { useLoading } from "@/Context/LoadingProvider";
 
-type Book = {
-  number: number;
-  title: string;
-  originalTitle: string;
-  releaseDate: string;
-  description: string;
-  pages: number;
-  cover: string;
-  index: number;
-};
+
+
 
 const Book = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
+  const { books, error } = useSelector((state: RootState) => state.books);
+  const { startLoading, stopLoading } = useLoading();
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('https://potterapi-fedeperin.vercel.app/en/books');
-        if (!response.ok) {
-          throw new Error('Failed to fetch books');
-        }
-        const data = await response.json();
-        setBooks(data);
-      } catch (err) {
-        console.error('API Error:', err);
-        setError('Failed to load books.');
-      } finally {
-        setLoading(false);
-      }
-    };
+    startLoading();
+    dispatch(fetchBooks()).finally(stopLoading);
+  }, [dispatch]);
 
-    fetchBooks();
-  }, []);
-
-  if (loading) return <p className="text-center  text-gray-500">Loading books...</p>;
-  if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+ 
+ 
+  if (error) return <p className="text-center text-red-500 text-xl">Error: {error}</p>;
 
   return (
     <div className="py-10">
@@ -62,5 +43,6 @@ const Book = () => {
     </div>
   );
 };
+
 
 export default Book;

@@ -7,6 +7,8 @@ import Navbar from './components/Header/Navbar'
 import Character from './Features/Characters/Character';
 import Houses from './Features/Houses/Houses';
 import Spells from './Features/Spells/Spells';
+import Loader from "./components/Header/Loader"
+import { LoadingProvider } from "./Context/LoadingProvider"
 
 
 
@@ -36,7 +38,10 @@ function App() {
 
   return (
     <>
-      <Router>
+
+    <LoadingProvider>
+        <Loader/>
+        <Router>
         <Navbar />
         <Layout>
           <Routes>
@@ -50,6 +55,8 @@ function App() {
           </Routes>
         </Layout>
       </Router>
+      </LoadingProvider>
+      
 
 
 

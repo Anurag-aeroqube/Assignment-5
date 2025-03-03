@@ -102,7 +102,7 @@ const Navbar = () => {
 
                     </div>
 
-                    <div className="hidden lg:flex sticky top-0 z-14 md:justify-between justify-end items-center px-4 shadow-2xl border-b h-16 bg-background/90">
+                    <div className="hidden lg:flex sticky top-0 z-14 md:justify-between justify-end items-center px-4 hover:cursor-pointer shadow-2xl border-b h-16 bg-background/90">
                         <ThemeToggle /> {/* Add the theme toggle button here */}
                     </div>
                     

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Housescard from '@/ui/Housescard'
-import { error } from 'console';
 
+import { useLoading } from '@/Context/LoadingProvider';
 
 
 type Houses={
@@ -21,13 +21,13 @@ type Housedata={
 const Houses: React.FC<Housedata> = () => {
 
     const [houses,sethouses]=useState<Houses[]>([]);
-    const [loading, setLoading]=useState<boolean>(true);
+     const { startLoading, stopLoading } = useLoading();
     const [err, setError]=useState<string | null>(null);
 
     useEffect(()=>{
         const fetchhouses =async ()=>{
             try{
-                setLoading(true);
+                startLoading();
                 const response= await fetch('https://potterapi-fedeperin.vercel.app/en/houses');
                 if(!response.ok)
                 {
@@ -41,13 +41,13 @@ const Houses: React.FC<Housedata> = () => {
                 console.error('API Error:', err);
                 setError('Failed to load books.');
               } finally {
-                setLoading(false);
+                stopLoading();
               }
         };
         fetchhouses();
     },[]);
 
-    if (loading) return <p className="text-center  text-gray-500">Loading Houses...</p>;
+    
     if (err) return <p className="text-center text-red-500">Error: {err}</p>;
   
 
