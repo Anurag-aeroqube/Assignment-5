@@ -2,13 +2,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import booksReducer from "./slices/booksSlice";
 import characterReducer from './slices/characterSlice';
+import houseReducer from './slices/houseSlice'
 
 
 export const store = configureStore({
   reducer: {
     books: booksReducer, // Yaha baad me aur reducers add kar sakte hain
     characters:characterReducer,
-   
+    houses : houseReducer,  
   },
 });
 

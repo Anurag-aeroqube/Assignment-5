@@ -5,9 +5,6 @@ import { fetchBooks } from "@/redux/slices/booksSlice";
 import { RootState, AppDispatch } from "@/redux/store";
 import { useLoading } from "@/Context/LoadingProvider";
 
-
-
-
 const Book = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { books, error } = useSelector((state: RootState) => state.books);
@@ -36,7 +33,7 @@ const Book = () => {
       <section className="mt-12 w-full mx-auto">
         <div className="w-[92%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-3 gap-6">
           {books.map((book) => (
-            <Bookcard key={book.number} book={book} />
+            <Bookcard key={book.number} book={book} /> // bookcard me bookes:bookes[] nii likhna hai
           ))}
         </div>
       </section>

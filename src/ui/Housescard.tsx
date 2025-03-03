@@ -20,7 +20,7 @@ type Houses = {
 }
 
 type Housedata = {
-    house: Houses[];
+    house: Houses;
 }
 
 const houseClassMap: Record<string, string> = {

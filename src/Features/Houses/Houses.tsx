@@ -1,54 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import Housescard from '@/ui/Housescard'
+import { RootState, AppDispatch } from "@/redux/store";
 
 import { useLoading } from '@/Context/LoadingProvider';
+import { fetchHouses } from '@/redux/slices/houseSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 
-type Houses={
-    house:string;
-    emoji:string;
-    founder:string;
-    colors:string[];
-    animal:string;
-    index:number;
 
-}
 
-type Housedata={
-    House:Houses[];
-}
+const Houses= () => {
 
-const Houses: React.FC<Housedata> = () => {
-
-    const [houses,sethouses]=useState<Houses[]>([]);
-     const { startLoading, stopLoading } = useLoading();
-    const [err, setError]=useState<string | null>(null);
+    const dispatch = useDispatch<AppDispatch>();
+  const { houses, error } = useSelector((state: RootState) => state.houses);
+  const { startLoading, stopLoading } = useLoading();
 
     useEffect(()=>{
-        const fetchhouses =async ()=>{
-            try{
-                startLoading();
-                const response= await fetch('https://potterapi-fedeperin.vercel.app/en/houses');
-                if(!response.ok)
-                {
-                    throw new Error("failed to fetch houses");
-                }
-                const data=await response.json();
-                sethouses(data);
-
-            }
-            catch (err) {
-                console.error('API Error:', err);
-                setError('Failed to load books.');
-              } finally {
-                stopLoading();
-              }
-        };
-        fetchhouses();
-    },[]);
+      startLoading();
+      dispatch(fetchHouses()).finally(stopLoading);
+    },[dispatch]);
 
     
-    if (err) return <p className="text-center text-red-500">Error: {err}</p>;
+    if (error) return <p className="text-center text-red-500">Error: {error}</p>;
   
 
 
@@ -66,7 +39,7 @@ const Houses: React.FC<Housedata> = () => {
 
                 <section>
                     {houses.map((house)=>(
-                        <Housescard  key={house.index} house={house}/>
+                        <Housescard  key={house.index} house={house}/> //housescard me house:house[] nii likhna hai
                     ))}
                     
                 </section>

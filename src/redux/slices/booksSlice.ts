@@ -14,13 +14,13 @@ type Book = {
   index: number;
 };
 
-interface CharacterState{
+interface BookState{
     books: Book[];
   loading: boolean;
   error: string | null;
 }
 
-const initialState: CharacterState={
+const initialState: BookState={
     books:[],
     loading:false,
     error:null,
