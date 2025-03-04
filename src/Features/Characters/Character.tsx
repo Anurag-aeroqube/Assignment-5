@@ -51,14 +51,13 @@ const Character = () => {
                 {/* Tabs Section */}
                 <section className="w-full mb-8 ">
                     <Tabs defaultValue="all" className="">
-                    <TabsList className="w-full flex sm:grid sm:grid-cols-5 overflow-x-auto whitespace-nowrap mb-6 h-10 scrollbar-hide">
-    <TabsTrigger value="all" className="h-8 min-w-[80px] flex-shrink-0">All</TabsTrigger>
-    <TabsTrigger value="Gryffindor" className="h-8 min-w-[80px] flex-shrink-0">Gryffindor</TabsTrigger>
-    <TabsTrigger value="Slytherin" className="h-8 min-w-[80px] flex-shrink-0">Slytherin</TabsTrigger>
-    <TabsTrigger value="Ravenclaw" className="h-8 min-w-[80px] flex-shrink-0">Ravenclaw</TabsTrigger>
-    <TabsTrigger value="Hufflepuff" className="h-8 min-w-[80px] flex-shrink-0">Hufflepuff</TabsTrigger>
+                    <TabsList className="w-full flex  sm:grid sm:grid-cols-5 overflow-x-auto whitespace-nowrap mb-6 h-10 scrollbar-hide">
+    <TabsTrigger value="all" className="h-8 min-w-[50px] flex-shrink-0">All</TabsTrigger>
+    <TabsTrigger value="Gryffindor" className="h-8 min-w-[70px] flex-shrink-0">Gryffindor</TabsTrigger>
+    <TabsTrigger value="Slytherin" className="h-8 min-w-[70px] flex-shrink-0">Slytherin</TabsTrigger>
+    <TabsTrigger value="Ravenclaw" className="h-8 min-w-[70px] flex-shrink-0">Ravenclaw</TabsTrigger>
+    <TabsTrigger value="Hufflepuff" className="h-8 min-w-[70px] flex-shrink-0">Hufflepuff</TabsTrigger>
 </TabsList>
-
 
 
 

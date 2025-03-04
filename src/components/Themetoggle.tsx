@@ -25,7 +25,7 @@ const ThemeToggle = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-md bg-gray-700 hover:cursor-pointer text-white dark:bg-gray-200  dark:text-black transition"
+            className="p-2 rounded-md hidden lg:flex bg-gray-700 hover:cursor-pointer text-white dark:bg-gray-200  dark:text-black transition"
         >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </button>
